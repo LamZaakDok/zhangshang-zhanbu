@@ -40,15 +40,16 @@ jobs:
       - name: 合成整片烧录镜像(full.bin, 含 bootloader+分区+固件+素材)
         run: |
           BUILD=.pio/build/m5stack-sticks3
-          FRAMEWORK=~/.platformio/packages/framework-arduinoespressif32
+          FRAMEWORK=$(ls -d ~/.platformio/packages/framework-arduinoespressif32*)
+          ESPTOOL=$(ls ~/.platformio/packages/tool-esptoolpy/esptool.py)
           mkdir -p dist
-          python -m esptool --chip esp32s3 merge_bin -o dist/zhangshang-zhanbu-full.bin \
+          python "$ESPTOOL" --chip esp32s3 merge_bin -o dist/zhangshang-zhanbu-full.bin \
             --flash_mode qio --flash_size 8MB \
-            0x0     $BUILD/bootloader.bin \
-            0x8000  $BUILD/partitions.bin \
-            0xe000  $FRAMEWORK/tools/partitions/boot_app0.bin \
-            0x10000 $BUILD/firmware.bin \
-            0x310000 $BUILD/spiffs.bin
+            0x0       $BUILD/bootloader.bin \
+            0x8000    $BUILD/partitions.bin \
+            0xe000    $FRAMEWORK/tools/partitions/boot_app0.bin \
+            0x10000   $BUILD/firmware.bin \
+            0x310000  $BUILD/spiffs.bin
           cp $BUILD/firmware.bin dist/
           cp $BUILD/spiffs.bin   dist/
 

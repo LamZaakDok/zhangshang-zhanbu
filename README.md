@@ -3,14 +3,21 @@
 [![build](https://github.com/LamZaakDok/zhangshang-zhanbu/actions/workflows/build.yml/badge.svg)](https://github.com/LamZaakDok/zhangshang-zhanbu/actions/workflows/build.yml)
 [![license: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
+**中文** | [English](README.en.md)
+
 基于 **M5Stack StickS3**（ESP32-S3）的掌上占卜固件，内置四个功能：
 
 **抽签 · 塔罗 · 六爻 · 掷杯筊**
 
 <p align="center">
-  <img src="data/splash.jpg" width="130" alt="开机签筒"/>
-  <img src="data/bless.jpg" width="130" alt="祝君好运"/>
-  <img src="docs/preview.png" width="130" alt="主界面"/>
+  <img src="data/splash.jpg" width="120" alt="开机签筒"/>
+  <img src="data/bless.jpg" width="120" alt="祝君好运"/>
+</p>
+
+### 界面示意
+
+<p align="center">
+  <img src="docs/screens.png" width="100%" alt="界面示意"/>
 </p>
 
 ## 功能
@@ -92,6 +99,7 @@ fortune-stick/
 - 六神依日干起，无 RTC，起卦前手动选择今日天干。
 - 结果仅供娱乐。
 
-## 构建状态
+## 构建与发布
 
-GitHub Actions 在每次 push / PR 时执行：生成字库 → 编译固件 → 打包文件系统。
+- **CI**：每次 push / PR 执行 生成字库 → 编译固件 → 打包文件系统，并上传 `firmware.bin` / `spiffs.bin` 构建产物。
+- **Release**：打 `v*` 标签（如 `v1.0.0`）时自动发布，附带 `firmware.bin`、`spiffs.bin` 及合成整片镜像 `zhangshang-zhanbu-full.bin`（一个文件从 `0x0` 整片烧录）。

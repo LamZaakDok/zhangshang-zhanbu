@@ -1,0 +1,8 @@
+.pio/
+.vscode/
+tools/tarot_src/
+tools/raw/
+tools/splash_preview.png
+tools/bless_preview.png
+tools/sim_about.png
+src/cnfont_generated.h

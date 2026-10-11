@@ -1,0 +1,37 @@
+name: build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 生成中文字库 (自动下载 Unifont)
+        run: |
+          pip install pillow
+          python tools/gen_font.py
+
+      - name: 安装 PlatformIO
+        run: pip install platformio
+
+      - name: 缓存 PlatformIO 平台与库
+        uses: actions/cache@v4
+        with:
+          path: ~/.platformio
+          key: pio-${{ hashFiles('platformio.ini') }}
+
+      - name: 编译固件
+        run: pio run
+
+      - name: 打包文件系统
+        run: pio run -t buildfs

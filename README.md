@@ -103,3 +103,4 @@ fortune-stick/
 
 - **CI**：每次 push / PR 执行 生成字库 → 编译固件 → 打包文件系统，并上传 `firmware.bin` / `spiffs.bin` 构建产物。
 - **Release**：打 `v*` 标签（如 `v1.0.0`）时自动发布，附带 `firmware.bin`、`spiffs.bin` 及合成整片镜像 `zhangshang-zhanbu-full.bin`（一个文件从 `0x0` 整片烧录）。
+- **M5Burner**：发布材料（封面/参数/整片镜像）见 [`m5burner/`](m5burner/README.md)，用 M5Burner 客户端登录后「USER CUSTOM → Publish」即可上架。

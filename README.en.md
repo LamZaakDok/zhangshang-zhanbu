@@ -85,3 +85,8 @@ fortune-stick/
 
 GitHub Actions runs on every push/PR: generate font → build firmware → build filesystem.
 Releases (`v*` tags) additionally publish `firmware.bin`, `spiffs.bin` and a merged `zhangshang-zhanbu-full.bin`.
+
+## Publish to M5Burner
+
+Ready-to-publish material (cover / payload / merged image) is in [`m5burner/`](m5burner/README.md).
+Log in with your M5Stack account in the M5Burner app and use **USER CUSTOM → Publish**.

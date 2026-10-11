@@ -1,0 +1,14 @@
+{
+  "fields": {
+    "name": "掌上占卜",
+    "description": "M5Stack StickS3 掌上占卜固件：抽签(灵隐寺/黄大仙祠/浅草寺 各100签)、塔罗(78张RWS牌面, 单张/三张/凯尔特十字)、六爻(纳甲装卦/六神/用神断语)、掷杯筊(三掷)。操作: 蓝键确认, 右键下移, 长按蓝键返回。开机显示签筒与祝福。",
+    "category": "sticks3",
+    "author": "LamZaakDok",
+    "version": "1.0.0",
+    "github": "https://github.com/LamZaakDok/zhangshang-zhanbu"
+  },
+  "files": {
+    "firmware": "./zhangshang-zhanbu-full.bin",
+    "cover": "./cover.png"
+  }
+}

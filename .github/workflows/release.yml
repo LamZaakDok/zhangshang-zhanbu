@@ -43,8 +43,9 @@ jobs:
           FRAMEWORK=$(ls -d ~/.platformio/packages/framework-arduinoespressif32*)
           ESPTOOL=$(ls ~/.platformio/packages/tool-esptoolpy/esptool.py)
           mkdir -p dist
+          # 注意: 不要覆盖 --flash_mode/--flash_size, 继承 bootloader 头部的 DIO/8MB;
+          # 若强制写成 qio, ESP32-S3 会因模式不匹配而无法启动。
           python "$ESPTOOL" --chip esp32s3 merge_bin -o dist/zhangshang-zhanbu-full.bin \
-            --flash_mode qio --flash_size 8MB \
             0x0       $BUILD/bootloader.bin \
             0x8000    $BUILD/partitions.bin \
             0xe000    $FRAMEWORK/tools/partitions/boot_app0.bin \
